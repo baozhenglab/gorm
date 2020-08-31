@@ -152,8 +152,6 @@ func getDBType(dbType string) GormDBType {
 		return GormDBTypeMySQL
 	case "postgres":
 		return GormDBTypePostgres
-	case "sqlite":
-		return GormDBTypeSQLite
 	case "mssql":
 		return GormDBTypeMSSQL
 	}
@@ -167,8 +165,6 @@ func (gdb *gormDB) getDBConn(t GormDBType) (dbConn *gorm.DB, err error) {
 		return gormdialects.MysqlDB(gdb.Uri)
 	case GormDBTypePostgres:
 		return gormdialects.PostgresDB(gdb.Uri)
-	case GormDBTypeSQLite:
-		return gormdialects.SQLiteDB(gdb.Uri)
 	case GormDBTypeMSSQL:
 		return gormdialects.MSSQLDB(gdb.Uri)
 	}
