@@ -178,7 +178,7 @@ func (gdb *gormDB) getConnWithRetry(dbType GormDBType, retryCount int) (dbConn *
 	if err != nil {
 		for {
 			time.Sleep(time.Second * 1)
-			gdb.logger.Errorf("Retry to connect %s.\n", gdb.name)
+			gdb.logger.Errorf("Retry to connect %s with error %v.\n", gdb.name, err)
 			db, err = gdb.getDBConn(dbType)
 
 			if err == nil {
