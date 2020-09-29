@@ -14,7 +14,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/baozhenglab/go-sdk/logger"
+	"github.com/baozhenglab/go-sdk/v2/logger"
 	"github.com/baozhenglab/gorm/gormdialects"
 	"github.com/jinzhu/gorm"
 	"github.com/sirupsen/logrus"
