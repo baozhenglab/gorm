@@ -175,6 +175,10 @@ func (gdb *gormDB) getDBConn(t GormDBType) (dbConn *gorm.DB, err error) {
 func (gdb *gormDB) getConnWithRetry(dbType GormDBType, retryCount int) (dbConn *gorm.DB, err error) {
 	db, err := gdb.getDBConn(dbType)
 
+	if dbType == GormDBTypeMySQL && err == nil {
+		db.DB().SetMaxIdleConns(0)
+	}
+
 	if err != nil {
 		for {
 			time.Sleep(time.Second * 1)
